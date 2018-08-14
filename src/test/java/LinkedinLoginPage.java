@@ -33,4 +33,17 @@ public class LinkedinLoginPage {
             e.printStackTrace();
         }
     }
+
+    public String getCurrentPageTitle() {
+        return browser.getTitle();
+    }
+
+    public String getCurrentPageUrl() {
+        return browser.getCurrentUrl();
+    }
+
+    public boolean isLoaded() {
+        return userEmailField.isDisplayed()
+                && getCurrentPageTitle().contains("LinkedIn: Log In or Sign Up");
+    }
 }

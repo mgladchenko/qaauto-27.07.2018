@@ -1,29 +1,26 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import static java.lang.Thread.sleep;
 
-public class LinkedinLoginPage {
-
-    private WebDriver browser;
-
+public class LinkedinLoginPage extends BasePage {
+    @FindBy(xpath = "//input[@id='login-email']")
     private WebElement userEmailField;
+
+    @FindBy(xpath = "//input[@id='login-password']")
     private WebElement userPasswordField;
+
+    @FindBy(xpath = "//input[@id='login-submit']")
     private WebElement signInButton;
 
     public LinkedinLoginPage(WebDriver browser) {
         this.browser = browser;
-        initElements();
+        PageFactory.initElements(browser,this);
     }
 
-    private void initElements() {
-        userEmailField = browser.findElement(By.xpath("//input[@id='login-email']"));
-        userPasswordField = browser.findElement(By.xpath("//input[@id='login-password']"));
-        signInButton = browser.findElement(By.xpath("//input[@id='login-submit']"));
-    }
-
-    public void login(String userEmail, String userPass) {
+    public LinkedinLoginSubmitPage loginReturnLoginSubmitPage(String userEmail, String userPass) {
         userEmailField.sendKeys(userEmail);
         userPasswordField.sendKeys(userPass);
         signInButton.click();
@@ -32,14 +29,31 @@ public class LinkedinLoginPage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        return new LinkedinLoginSubmitPage(browser);
     }
 
-    public String getCurrentPageTitle() {
-        return browser.getTitle();
+    public LinkedinHomePage loginReturnHomePage(String userEmail, String userPass) {
+        userEmailField.sendKeys(userEmail);
+        userPasswordField.sendKeys(userPass);
+        signInButton.click();
+        try {
+            sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return new LinkedinHomePage(browser);
     }
 
-    public String getCurrentPageUrl() {
-        return browser.getCurrentUrl();
+    public LinkedinLoginPage loginReturnLoginPage(String userEmail, String userPass) {
+        userEmailField.sendKeys(userEmail);
+        userPasswordField.sendKeys(userPass);
+        signInButton.click();
+        try {
+            sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return new LinkedinLoginPage(browser);
     }
 
     public boolean isLoaded() {

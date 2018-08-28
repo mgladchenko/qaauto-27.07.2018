@@ -2,6 +2,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import util.GMailService;
 
 import static java.lang.Thread.sleep;
 
@@ -26,6 +27,8 @@ public class LinkedinPasswordResetSubmitPage extends BasePage {
     }
 
     public LinkedinSetNewPasswordPage navigateToLinkFromEmail() {
+
+
         //ToDo
         return new LinkedinSetNewPasswordPage(browser);
     }

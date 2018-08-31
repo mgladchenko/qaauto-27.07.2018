@@ -3,7 +3,7 @@ import util.GMailService;
 
 public abstract class BasePage {
     protected WebDriver browser;
-    protected GMailService gMailService;
+    protected static GMailService gMailService = new GMailService();
 
     public String getCurrentPageTitle() {
         return browser.getTitle();

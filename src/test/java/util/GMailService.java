@@ -40,8 +40,8 @@ public class GMailService {
 	 * Default util.GMailService constructor with predefined user/pass credentials
 	 */
 	public GMailService(){
-		this.user = "postoltest@gmail.com";
-		this.pass = "q12345678T";
+		this.user = "linkedin.tst.yanina@gmail.com";
+		this.pass = "Mykola123";
 	}
 
 	/**

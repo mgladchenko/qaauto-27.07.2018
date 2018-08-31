@@ -41,7 +41,7 @@ public class GMailService {
 	 */
 	public GMailService(){
 		this.user = "linkedin.tst.yanina@gmail.com";
-		this.pass = "Mykola123";
+		this.pass = "Yanina123";
 	}
 
 	/**

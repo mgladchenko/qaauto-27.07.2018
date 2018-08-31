@@ -1,9 +1,10 @@
+package page;
+
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import util.GMailService;
 
 import static java.lang.Thread.sleep;
 
@@ -38,8 +39,9 @@ public class LinkedinPasswordResetSubmitPage extends BasePage {
         String resetPasswordLink =
                 StringUtils.substringBetween(message,
                         "To change your LinkedIn password, click <a href=\"<a href=&quot;",
-                        ">[text]</a>").replace("amp;","");
+                        "&quot;>[text]</a>").replace("amp;","");
 
+        System.out.println(resetPasswordLink);
         browser.get(resetPasswordLink);
         return new LinkedinSetNewPasswordPage(browser);
     }

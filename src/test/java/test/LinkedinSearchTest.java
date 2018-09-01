@@ -27,6 +27,12 @@ public class LinkedinSearchTest {
         browser.close();
     }
 
+    /**
+     * Verify successful search
+     *
+     * - Login
+     * - Search
+     */
     @Test
     public void basicSearchTest() {
         LinkedinHomePage linkedinHomePage = linkedinLoginPage.loginReturnHomePage(

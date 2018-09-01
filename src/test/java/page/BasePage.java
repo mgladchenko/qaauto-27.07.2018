@@ -10,7 +10,11 @@ public abstract class BasePage {
     protected WebDriver browser;
     protected static GMailService gMailService = new GMailService();
 
-    public WebElement waitUntilElementIsVisible (WebElement webElement, int timeOutInSeconds){
+    public WebElement waitUntilElementIsVisible (
+            WebElement webElement,
+            int timeOutInSeconds
+    )
+    {
         WebDriverWait wait = new WebDriverWait(browser, timeOutInSeconds);
         wait.until(ExpectedConditions.visibilityOf(webElement));
         return webElement;

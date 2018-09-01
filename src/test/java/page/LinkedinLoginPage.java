@@ -7,6 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import static java.lang.Thread.sleep;
 
+/**
+ * Page Object class for LinkedinLoginPage
+ */
 public class LinkedinLoginPage extends BasePage {
     @FindBy(xpath = "//input[@id='login-email']")
     private WebElement userEmailField;
@@ -20,6 +23,10 @@ public class LinkedinLoginPage extends BasePage {
     @FindBy(xpath = "//a[@class='link-forgot-password']")
     private WebElement forgotPasswordLink;
 
+    /**
+     * Constructor of LinkedinLoginPage class.
+     * @param browser - WebDriver instance from test.
+     */
     public LinkedinLoginPage(WebDriver browser) {
         this.browser = browser;
         PageFactory.initElements(browser,this);
@@ -29,11 +36,6 @@ public class LinkedinLoginPage extends BasePage {
         userEmailField.sendKeys(userEmail);
         userPasswordField.sendKeys(userPass);
         signInButton.click();
-        try {
-            sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         return new LinkedinLoginSubmitPage(browser);
     }
 

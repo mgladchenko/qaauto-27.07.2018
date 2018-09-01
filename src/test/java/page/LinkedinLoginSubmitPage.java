@@ -19,7 +19,7 @@ public class LinkedinLoginSubmitPage extends BasePage {
     public LinkedinLoginSubmitPage(WebDriver browser) {
         this.browser = browser;
         PageFactory.initElements(browser, this);
-        //wait for element
+        waitUntilElementIsVisible(alertBox, 10);
     }
 
     public String getAlertBoxText() {

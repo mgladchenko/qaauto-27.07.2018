@@ -10,21 +10,7 @@ import page.*;
 
 import static java.lang.Thread.sleep;
 
-public class LinkedinResetPasswordTest {
-    WebDriver browser;
-    LinkedinLoginPage linkedinLoginPage;
-
-    @BeforeMethod
-    public void beforeMethod() {
-        browser = new FirefoxDriver();
-        browser.get("https://www.linkedin.com/");
-        linkedinLoginPage = new LinkedinLoginPage(browser);
-    }
-
-    @AfterMethod
-    public void afterMethod() {
-        browser.close();
-    }
+public class LinkedinResetPasswordTest extends BaseTest{
 
     @Test
     public void successfulResetPasswordTest() throws InterruptedException {

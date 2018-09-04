@@ -10,7 +10,7 @@ import static java.lang.Thread.sleep;
 
 public class LinkedinHomePage extends BasePage {
 
-    @FindBy(xpath = "//*[@id='profile-nav-item']")
+    @FindBy(xpath = "//li[@id='profile-nav-item']")
     private WebElement profileNavigationItem;
 
     @FindBy(xpath = "//input[@placeholder='Search' and @role]")

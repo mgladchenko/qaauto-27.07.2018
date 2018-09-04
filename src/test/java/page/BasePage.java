@@ -9,6 +9,7 @@ import util.GMailService;
 public abstract class BasePage {
     protected WebDriver browser;
     protected static GMailService gMailService = new GMailService();
+    protected static String receivedEmail;
 
     public WebElement waitUntilElementIsVisible (
             WebElement webElement,

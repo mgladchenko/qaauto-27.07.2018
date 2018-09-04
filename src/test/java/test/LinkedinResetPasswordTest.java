@@ -6,10 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import page.LinkedinLoginPage;
-import page.LinkedinPasswordResetSubmitPage;
-import page.LinkedinRequestPasswordResetPage;
-import page.LinkedinSetNewPasswordPage;
+import page.*;
 
 import static java.lang.Thread.sleep;
 
@@ -31,6 +28,8 @@ public class LinkedinResetPasswordTest {
 
     @Test
     public void successfulResetPasswordTest() throws InterruptedException {
+        String newPassword = "Test123!";
+
         Assert.assertTrue(linkedinLoginPage.isLoaded(),
                 "LoginPage is not loaded.");
 
@@ -41,18 +40,25 @@ public class LinkedinResetPasswordTest {
 
         LinkedinPasswordResetSubmitPage linkedinPasswordResetSubmitPage =
                 linkedinRequestPasswordResetPage.findAccount("linkedin.tst.yanina@gmail.com");
-
         sleep(180000);
-
         Assert.assertTrue(linkedinPasswordResetSubmitPage.isLoaded(),
                 "PasswordResetSubmitPage is not loaded.");
 
-        //Navigate to URL from email manually
         LinkedinSetNewPasswordPage linkedinSetNewPasswordPage =
                 linkedinPasswordResetSubmitPage.navigateToLinkFromEmail();
         Assert.assertTrue(linkedinSetNewPasswordPage.isLoaded(),
                 "SetNewPasswordPage is not loaded.");
 
+        LinkedinSuccessfulPasswordResetPage linkedinSuccessfulPasswordResetPage =
+                linkedinSetNewPasswordPage.submitNewPassword(newPassword);
+        Assert.assertTrue(linkedinSuccessfulPasswordResetPage.isLoaded(),
+                "SuccessfulPasswordResetPage is not loaded.");
+
+        LinkedinHomePage linkedinHomePage =
+                linkedinSuccessfulPasswordResetPage.clickOnGoToHomeButton();
+        //sleep(180000);
+        Assert.assertTrue(linkedinHomePage.isLoaded(),
+                "HomePage is not loaded.");
 
 
     }

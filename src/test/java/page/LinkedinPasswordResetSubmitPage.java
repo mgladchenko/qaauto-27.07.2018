@@ -29,17 +29,10 @@ public class LinkedinPasswordResetSubmitPage extends BasePage {
     }
 
     public LinkedinSetNewPasswordPage navigateToLinkFromEmail() {
-        String messageSubject = "here's the link to reset your password";
-        String messageTo = "linkedin.tst.yanina@gmail.com";
-        String messageFrom = "security-noreply@linkedin.com";
-
-        String message = gMailService.waitMessage(messageSubject, messageTo, messageFrom, 180);
-        System.out.println("Content: " + message);
-
         String resetPasswordLink =
-                StringUtils.substringBetween(message,
-                        "To change your LinkedIn password, click <a href=\"<a href=&quot;",
-                        "&quot;>[text]</a>").replace("amp;","");
+                StringUtils.substringBetween(receivedEmail,
+                        "To change your LinkedIn password, click <a href=\"",
+                        "\" style").replace("amp;","");
 
         System.out.println(resetPasswordLink);
         browser.get(resetPasswordLink);

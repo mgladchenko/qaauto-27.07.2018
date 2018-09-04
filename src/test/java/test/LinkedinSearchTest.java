@@ -28,10 +28,19 @@ public class LinkedinSearchTest {
     }
 
     /**
-     * Verify successful search
+     * Verify successful search by searchTerm.
      *
-     * - Login
-     * - Search
+     * Preconditions:
+     * - Navigate to https://www.linkedin.com/
+     *
+     * Steps:
+     * - Verify Login page is loaded.
+     * - Login as registered user.
+     * - Verify Home page is loaded.
+     * - Search for "HR" searchTerm
+     * - Verify Search page is loaded.
+     * - Verify 10 results displayed on page.
+     * - Verify each result contains searchTerm.
      */
     @Test
     public void basicSearchTest() {
